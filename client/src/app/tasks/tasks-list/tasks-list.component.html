@@ -1,0 +1,51 @@
+<div class="tasks-container">
+  <h1>Tasks Manager</h1>
+
+  @if (loading) {
+    <div class="state-message">
+      <p>Loading tasks...</p>
+    </div>
+  }
+
+  @if (error && !loading) {
+    <div class="state-message error">
+      <p>Error: {{ error }}</p>
+      <button (click)="loadTasks()">Retry</button>
+    </div>
+  }
+
+  @if (!loading && !error) {
+    <div class="add-task-form">
+      <input
+        type="text"
+        [(ngModel)]="newTaskTitle"
+        (keyup.enter)="createTask()"
+        placeholder="Enter task title"
+        class="task-input"
+      />
+      <button (click)="createTask()" [disabled]="!newTaskTitle.trim()" class="add-button">
+        Add Task
+      </button>
+    </div>
+
+    <ul class="tasks-list">
+      @for (task of tasks; track task.id) {
+        <li class="task-item" [class.completed]="task.completed">
+          <input
+            type="checkbox"
+            [checked]="task.completed"
+            (change)="toggleTask(task)"
+            class="task-checkbox"
+          />
+          <span class="task-title">{{ task.title }}</span>
+          <span class="task-status">{{ task.completed ? '✓ Done' : '○ Pending' }}</span>
+        </li>
+      }
+    </ul>
+    
+    @if (tasks.length === 0) {
+      <p class="empty-message">No tasks found.</p>
+    }
+  }
+</div>
+
