@@ -16,7 +16,5 @@ app.use('/tasks', tasksRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/health`);
-  console.log(`Tasks API: http://localhost:${PORT}/tasks`);
 });
 

@@ -9,7 +9,7 @@ class TasksService {
   ];
 
   getAllTasks(): Task[] {
-    return [...this.tasks];
+    return this.tasks;
   }
 
   createTask(title: string): Task {

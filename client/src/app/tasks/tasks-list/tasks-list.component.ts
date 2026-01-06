@@ -42,7 +42,6 @@ export class TasksListComponent implements OnInit {
     const title = this.newTaskTitle.trim();
     if (!title) return;
 
-
     const dto: CreateTaskDto = { title };
 
     this.tasksService.createTask(dto).subscribe({

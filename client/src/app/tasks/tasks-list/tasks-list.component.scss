@@ -1,7 +1,10 @@
 .tasks-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 40px 20px;
+
 
   h1 {
     color: #333;
@@ -78,10 +81,9 @@
   }
 
   .tasks-list {
+    flex: 1;
+    overflow: auto;
     list-style: none;
-    padding: 0;
-    margin: 0;
-
 
     .task-item {
       display: flex;
